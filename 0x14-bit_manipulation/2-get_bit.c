@@ -1,46 +1,27 @@
-#include"main.h"
-
-/**
- * get_bit - prog returns the value of a bit at a given index.
- * @n: number to check bits in
- * @index: index at which to check bit
- *
- * Return: value of the bit, or -1 if there is an error
- */
-int get_bit(unsigned long int n, unsigned int index)
-{
-	unsigned long int divisor, check;
-
-	if (index > (sizeof(unsigned long int) * 8 - 1))
-		return (-1);
-	divisor = 1 << index;
-	check = n & divisor;
-	if (check == divisor)
-		return (1);
-	return (0);
-}
-
-
-
-3-set_bit.c
-
 #include "main.h"
 
 /**
- * set_bit - prog sets the value of a bit to 1 at a given index.
- * @n: number to set
- * @index: index at which to set bit
+ * get_bit - returns the value of a bit at a given
+ * index.
+ * @n: unsigned long int input.
+ * @index: index of the bit.
  *
- * Return: 1 if success, or -1 if an error occurred
+ * Return: value of the bit.
  */
-int set_bit(unsigned long int *n, unsigned int index)
+int get_bit(unsigned long int n, unsigned int index)
 {
-	unsigned long int setbit;
+	unsigned int i;
 
-	if (index > (sizeof(unsigned long int) * 8 - 1))
-		return (-1);
-	setbit = 1 << index;
-	*n = *n | setbit;
-	return (1);
+	if (n == 0 && index < 64)
+		return (0);
+
+	for (i = 0; i <= 63; n >>= 1, i++)
+	{
+		if (index == i)
+		{
+			return (n & 1);
+		}
+	}
+
+	return (-1);
 }
-
