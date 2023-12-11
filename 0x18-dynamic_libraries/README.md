@@ -1,0 +1,1 @@
+Dynamic libraries in the C programming language provide a way to create reusable code that can be shared across multiple programs. These libraries are loaded at runtime, allowing for more efficient memory usage and better modularity.
